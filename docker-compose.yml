@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: wallet_db
+    restart: always
+    environment:
+      POSTGRES_DB: digital_wallet  # Mantido igual ao settings.py
+      POSTGRES_USER: wallet_user
+      POSTGRES_PASSWORD: wallet123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wallet_user -d digital_wallet"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: wallet_api
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy  # Aguarda o postgres estar pronto
+    environment:
+      - DATABASE_URL=postgres://wallet_user:wallet123@db:5432/digital_wallet  # Corrigido o nome do DB
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: >
+      bash -c "python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  pgdata:
