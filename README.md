@@ -19,7 +19,7 @@ A Wallet API é uma API REST para gerenciamento de carteiras digitais e transaç
 1. Clone o repositório:
    ```sh
    git clone https://github.com/dalmasjunior/digital_wallet.git
-   cd wallet-api
+   cd digital_wallet
    ```
 2. Construa e suba os containers:
    ```sh
