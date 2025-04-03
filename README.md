@@ -18,15 +18,14 @@ A Wallet API é uma API REST para gerenciamento de carteiras digitais e transaç
 ### Rodando com Docker
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/seu-usuario/wallet-api.git
+   git clone https://github.com/dalmasjunior/digital_wallet.git
    cd wallet-api
    ```
-2. Configure o arquivo `.env` com as variáveis necessárias.
-3. Construa e suba os containers:
+2. Construa e suba os containers:
    ```sh
    docker-compose up --build
    ```
-4. A API estará disponível em `http://127.0.0.1:8000/`
+5. A API estará disponível em `http://127.0.0.1:8000/`
 
 ### Rodando sem Docker
 1. Crie um ambiente virtual e ative-o:
@@ -119,5 +118,5 @@ pytest
 ```
 
 ## Autor
-- [Seu Nome](https://github.com/seu-usuario)
+- [Paulo Dalmas](https://github.com/dalmasjunior)
 
